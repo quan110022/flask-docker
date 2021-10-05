@@ -5,6 +5,7 @@ pipeline {
   environment {
     DOCKER_IMAGE = "quan/flask-docker"
   }
+  stages {
 
     stage("build") {
       agent { node {label 'master'}}
