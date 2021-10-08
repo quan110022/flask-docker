@@ -7,12 +7,7 @@ pipeline {
        }        
     }
     stage("build") {
-      agent {
-        docker {
-          image 'node:latest'
-          args '-v tutorial_jenkins_frontend_modules:$WORKSPACE/node_modules'
-        }
-      }
+      
       steps {
         withDockerRegistry(credentialsId: 'docker-hub-test-build', url: 'https://index.docker.io/v1/') {
           sh 'docker build -t 260899/flask-images .'
