@@ -15,6 +15,13 @@ pipeline {
          }
       }        
     }
+    stage("deploy") {
+      steps {
+        sshagent(['ssh-private']) {
+            sh "ssh -o StrictHostKeyChecking=no -l cloudbees 192.168.75.65 './deploy.sh'"
+        }
+      }        
+    }
   }
 }
 
