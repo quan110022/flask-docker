@@ -18,7 +18,7 @@ pipeline {
     stage("deploy") {
       steps {
         sshagent(['ssh-private']) {
-            sh "ssh -o StrictHostKeyChecking=no -l root 192.168.75.65"
+            sh "ssh -o StrictHostKeyChecking=no -l root 192.168.75.65 docker run -d -p 83:5000 docker push 260899/flask-images:latest"
         }
       }        
     }
